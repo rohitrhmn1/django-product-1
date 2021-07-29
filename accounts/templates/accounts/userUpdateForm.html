@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}User Form{% endblock title %}
+
+{% block content %}
+
+  <div class="container mt-3">
+    <div class="card col-md-6 mx-auto mb-3">
+
+      <div class="card-header">
+        <h4 class="card-title">
+          Update
+        </h4>
+      </div>
+      <div class="card-body">
+
+        <div class="col-8 mx-auto">
+          <form class="row g-2" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form | crispy}}
+
+              <div class="col-12 text-center">
+                <a href="{% url 'auth:details' request.user.unique_id %}" class="btn btn-outline-success rounded-pill">
+                  <i class="bi bi-arrow-left"></i>
+                  Back
+                </a>
+                <button type="submit" class="btn btn-primary rounded-pill">
+                  <i class="bi bi-check2"></i>
+                  Save</button>
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  {% endblock content %}

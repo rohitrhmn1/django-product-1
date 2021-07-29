@@ -1,0 +1,51 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light navbar-bg-color">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Django Product App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+            {% if request.user.profile_img %}
+              <img src="{{ request.user.profile_img.url }}" width="30" height="30" class="rounded-circle" alt="profile-image" style="object-fit: cover;">
+            {% else %}
+              <img src="{% static 'images/avatar.png' %}" width="30" height="30" class="rounded-circle" alt="profile-image">
+            {% endif %}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+            {% if request.user.is_authenticated %}
+
+              <li>
+                <a class="dropdown-item" href="{% url 'auth:logout' %}">Logout</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider"/>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'auth:details' request.user.unique_id %}">Profile</a>
+              </li>
+
+            {% else %}
+              <li>
+                <a class="dropdown-item" href="{% url 'auth:login' %}">Login</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'auth:register' %}">Register</a>
+              </li>
+
+            {% endif %}
+
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

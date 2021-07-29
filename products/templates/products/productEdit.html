@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% block title %}Edit product{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container mt-3">
+
+    <div class="card mx-auto">
+      <div class="card-header">
+        <h5 class="card-title">Edit Product</h5>
+      </div>
+      <div class="card-body">
+
+        <form class="row" action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="col-md-6 mx-auto">
+            {{form | crispy}}
+            </div>
+
+            <div class="col-12 text-center">
+              <a href="{% url 'products:index' %}" class="btn btn-ouline-light mt-3 rounded-pill" style="color: black; border-color: black;">
+                <i class="bi bi-x-lg"></i>
+                Cancel</a>
+              <button type="submit" class="btn btn-success mt-3 rounded-pill">
+                <i class="bi bi-check-lg"></i>
+                Done</button>
+
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  {% endblock content %}

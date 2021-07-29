@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Django Product App{% endblock title %}
+
+{% block content %}
+
+  <div class="container mt-3">
+    <div class="d-flex flex-row mb-3">
+      <h3 class="me-auto">Products list</h3>
+
+      <a href="{% url 'products:add' %}" class="btn btn-primary rounded-pill">
+        <i class="bi bi-plus"></i>
+        Add product
+      </a>
+
+    </div>
+
+  </h1>
+
+  <div class="card text-center">
+    <div class="card-body">
+
+      {% include 'products/productsList.html' with object_list=object_list show_add_by=True show_actions=False %}
+    </div>
+  </div>
+
+</div>
+
+{% endblock content %}

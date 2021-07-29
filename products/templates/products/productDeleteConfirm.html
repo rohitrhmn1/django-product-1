@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{% block title %}Confirm delete of this product
+{% endblock title %}
+
+{% block content %}
+  <div class="container mt-3">
+
+    <div class="card text-center">
+
+      <div class="card-body">
+        <form action="" method="post">{% csrf_token %}
+
+          <h5 class="card-title">Are you sure you want to delete "{{ object.name }}"?</h5>
+          <p class="card-text">Deleting this item is permanent and irreversible.</p>
+          <a href="{% url 'products:index' %}" class="btn btn-outline-success rounded-pill">
+            <i class="bi bi-x-lg"></i>
+          </a>
+          <button type="submit" class="btn btn-outline-danger rounded-pill">
+            <i class="bi bi-check-lg"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+{% endblock content %}

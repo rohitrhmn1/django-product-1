@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% block title %}User Form{% endblock title %}
+
+{% block content %}
+  <div class="container mt-3">
+
+    <div class="card text-center mx-auto my-auto">
+      <div class="card-body">
+        <h5 class="card-title m-4">You have been logged out</h5>
+
+        <a href="{% url 'products:index' %}" class="btn btn-secondary rounded-pill">
+          <i class="bi bi-house-door-fill"></i>
+          Home</a>
+        <a href="{% url 'auth:login' %}" class="btn btn-primary rounded-pill">
+          <i class="bi bi-person"></i>
+          Login</a>
+      </div>
+    </div>
+
+    <h1></h1>
+
+  </div>
+
+{% endblock content %}
